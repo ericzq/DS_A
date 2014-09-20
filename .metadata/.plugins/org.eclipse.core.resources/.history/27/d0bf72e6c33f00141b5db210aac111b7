@@ -1,0 +1,25 @@
+public class Exercise_1_6 {
+	public static void permute(String str) {
+		permute(str.toCharArray(),0,str.length()-1);
+	}
+
+	private static void permute(char[] str, int low, int high) {
+		if (low == high) {
+			System.out.println(str.toString());
+		} else {
+			char x = str[low];
+			System.out.println(x);
+			for (int i = low + 1; i < high; i++) {
+				str[low] = str[i];
+				str[i] = x;
+				permute(str, low + 1, high);
+				str[i] = str[low];
+			}
+		}
+	}
+	
+	public static void main(String[] args){
+		permute("abc");
+	}
+
+}
